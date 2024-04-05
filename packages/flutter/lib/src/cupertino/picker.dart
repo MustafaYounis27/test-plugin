@@ -82,13 +82,11 @@ class CupertinoPicker extends StatefulWidget {
     required List<Widget> children,
     this.selectionOverlay = const CupertinoPickerDefaultSelectionOverlay(),
     bool looping = false,
-  }) : assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
-       assert(magnification > 0),
-       assert(itemExtent > 0),
-       assert(squeeze > 0),
-       childDelegate = looping
-                       ? ListWheelChildLoopingListDelegate(children: children)
-                       : ListWheelChildListDelegate(children: children);
+  })  : assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
+        assert(magnification > 0),
+        assert(itemExtent > 0),
+        assert(squeeze > 0),
+        childDelegate = looping ? ListWheelChildLoopingListDelegate(children: children) : ListWheelChildListDelegate(children: children);
 
   /// Creates a picker from an [IndexedWidgetBuilder] callback where the builder
   /// is dynamically invoked during layout.
@@ -121,11 +119,11 @@ class CupertinoPicker extends StatefulWidget {
     required NullableIndexedWidgetBuilder itemBuilder,
     int? childCount,
     this.selectionOverlay = const CupertinoPickerDefaultSelectionOverlay(),
-  }) : assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
-       assert(magnification > 0),
-       assert(itemExtent > 0),
-       assert(squeeze > 0),
-       childDelegate = ListWheelChildBuilderDelegate(builder: itemBuilder, childCount: childCount);
+  })  : assert(diameterRatio > 0.0, RenderListWheelViewport.diameterRatioZeroMessage),
+        assert(magnification > 0),
+        assert(itemExtent > 0),
+        assert(squeeze > 0),
+        childDelegate = ListWheelChildBuilderDelegate(builder: itemBuilder, childCount: childCount);
 
   /// Relative ratio between this picker's height and the simulated cylinder's diameter.
   ///
@@ -297,8 +295,7 @@ class _CupertinoPickerState extends State<CupertinoPicker> {
               ),
             ),
           ),
-          if (widget.selectionOverlay != null)
-            _buildSelectionOverlay(widget.selectionOverlay!),
+          if (widget.selectionOverlay != null) _buildSelectionOverlay(widget.selectionOverlay!),
         ],
       ),
     );
@@ -328,7 +325,6 @@ class _CupertinoPickerState extends State<CupertinoPicker> {
 ///
 ///  * [CupertinoPicker], which uses this widget as its default [CupertinoPicker.selectionOverlay].
 class CupertinoPickerDefaultSelectionOverlay extends StatelessWidget {
-
   /// Creates an iOS 14 style selection overlay that highlights the magnified
   /// area (or the currently selected item, depending on how you described it
   /// elsewhere) of a [CupertinoPicker].
@@ -465,6 +461,7 @@ class _RenderCupertinoPickerSemantics extends RenderProxyBox {
     _currentIndex = controller.selectedItem;
     markNeedsSemanticsUpdate();
   }
+
   @override
   void describeSemanticsConfiguration(SemanticsConfiguration config) {
     super.describeSemanticsConfiguration(config);
